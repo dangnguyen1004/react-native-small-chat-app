@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import RandomButton from './RandomButton';
 
 export default function Home() {
@@ -11,7 +11,8 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text>Counter: {counter}</Text>
+      <Text style={styles.text}>Counter: {counter}</Text>
+      
       <RandomButton onPress={handlePress} title="Press di ne"></RandomButton>
     </View>
   );
@@ -23,4 +24,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '100%',
   },
+  text: {
+      fontSize: 20,
+      fontWeight: 'bold'
+  }
 });
