@@ -13,8 +13,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Splash" component={SplashScreen} options={{headerShown: false}}></Stack.Screen>
-        <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-        <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
+        <Stack.Screen name="Home" component={HomeScreen} options={{title: 'List Friends'}}></Stack.Screen>
+        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

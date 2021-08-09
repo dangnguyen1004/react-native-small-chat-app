@@ -1,27 +1,32 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
-import AppButton from '../components/AppButton';
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Fontisto';
+import colors from '../config/colors';
 
-export default function SplashScreen() {
-    return (
-        <View style={styles.container}>
-            <Icon name='money' size={70} color="#333" />
-            <Text style={styles.text}>Welcome to MONO</Text>
-            <AppButton></AppButton>
-        </View>
-    )
+export default function SplashScreen({navigation}) {
+  setTimeout(() => {
+    navigation.navigate('Login');
+  }, 3000);
+
+  return (
+    <View style={styles.container}>
+      <Icon name="hipchat" size={90} color={colors.black} />
+      <Text style={styles.text}>Welcome to ChatApps</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: 15,
-        marginTop: 20,
-    }
-})
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  text: {
+    fontSize: 20,
+    marginTop: 10,
+    color: colors.black,
+  },
+});

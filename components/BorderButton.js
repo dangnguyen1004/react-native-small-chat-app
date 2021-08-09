@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-export default function AppButton({style, onPress, title = 'Button', color = '#fff', ...otherProps}) {
+export default function BorderButton({style, onPress, title = 'Button', color = '#fff', ...otherProps}) {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.container, style]} {...otherProps}>
       <Text style={[styles.text, {color: color}]}>{title}</Text>
