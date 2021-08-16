@@ -6,8 +6,9 @@ export default function ChatIn({message}) {
   return (
     <View style={styles.container}>
       <View style={styles.message}>
-        <Text style={styles.text}>{message}</Text>
-        <Text>18:31</Text>
+        <Text style={{color: colors.medium}}>{message.name}</Text>
+        <Text style={styles.text}>{message.message}</Text>
+        <Text style={{color: colors.grey}}>{message.time}</Text>
       </View>
 
     </View>
@@ -26,9 +27,20 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingHorizontal: 16,
         borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    
+        elevation: 5,
+    
     },
     text: {
         fontSize: 19,
         marginBottom: 20,
+        marginTop: 10,
     }
 });

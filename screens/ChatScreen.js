@@ -10,6 +10,7 @@ import io from 'socket.io-client';
 import {useState} from 'react';
 import {useEffect} from 'react';
 import {AutoScrollFlatList} from 'react-native-autoscroll-flatlist';
+import moment from 'moment';
 
 const socket = io('http://192.168.180.123:3000');
 
@@ -18,7 +19,8 @@ export default function ChatScreen({route}) {
   const {name} = route.params;
 
   const handleSend = message => {
-    socket.emit('chat message', {message, name});
+    const now = moment()
+    socket.emit('chat message', {message, name, time: now.format('LTS')});
   };
 
   useEffect(() => {
@@ -29,11 +31,11 @@ export default function ChatScreen({route}) {
   });
 
   const renderItem = ({item}) => (
-    <React.Fragment key={item.message}>
+    <React.Fragment>
       {item.name === name ? (
-        <ChatOut message={item.message} />
+        <ChatOut message={item} />
       ) : (
-        <ChatIn message={item.message} />
+        <ChatIn message={item} />
       )}
     </React.Fragment>
   );
@@ -50,7 +52,7 @@ export default function ChatScreen({route}) {
         style={styles.messagesContainer}
         data={messages}
         renderItem={renderItem}
-        keyExtractor={item => item.message}
+        keyExtractor={item => item.message + item.time.toString()}
       />
       <ChatSend onSendMessage={handleSend} />
     </View>
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.grey,
+    backgroundColor: colors.white,
   },
   headerBar: {
     paddingHorizontal: 20,
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: colors.primary,
+    backgroundColor: colors.medium,
   },
   title: {
     fontSize: 25,
